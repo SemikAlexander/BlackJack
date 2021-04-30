@@ -21,4 +21,9 @@ class SettingsActivity : AppCompatActivity() {
 
         }
     }
+
+    override fun onBackPressed() {
+        startActivity<MainActivity>()
+        finish()
+    }
 }

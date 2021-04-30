@@ -2,11 +2,19 @@
 <RelativeLayout
     android:id="@+id/main_activity"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/main_header">
+
+    <com.example.blackjack.view.CustomTextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/button_top"
+        android:text="@string/app_name"/>
 
     <RelativeLayout
         android:id="@+id/game_menu"
@@ -18,14 +26,24 @@
             android:id="@+id/play_game"
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
+            android:textSize="@dimen/button_text_size"
             android:text="@string/play_game"
+            android:textStyle="bold"
+            android:fontFamily="@font/f14770"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/background_button_color"
             android:layout_centerHorizontal="true"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/stats_game"
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
+            android:textSize="@dimen/button_text_size"
             android:text="@string/stats_game"
+            android:textStyle="bold"
+            android:fontFamily="@font/f14770"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/background_button_color"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/play_game"
             android:layout_marginTop="@dimen/button_top"/>
@@ -34,7 +52,12 @@
             android:id="@+id/rules_game"
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
+            android:textSize="@dimen/button_text_size"
             android:text="@string/rules_game"
+            android:textStyle="bold"
+            android:fontFamily="@font/f14770"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/background_button_color"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/stats_game"
             android:layout_marginTop="@dimen/button_top"/>
@@ -43,11 +66,15 @@
 
     <ImageButton
         android:id="@+id/settings"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:src="@drawable/ic_settings"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:scaleType="centerCrop"
         android:layout_alignParentRight="true"
-        android:background="@android:color/transparent"/>
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/transparent" />
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
