@@ -13,8 +13,8 @@
 
         <ImageButton
             android:id="@+id/dealer_imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/ic_dealer"
             android:scaleType="centerCrop"
             android:background="@android:color/transparent"
@@ -32,7 +32,7 @@
             android:textSize="35sp"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="45dp"/>
+            android:layout_marginTop="25dp"/>
 
         <TextView
             android:id="@+id/dealer_points"
@@ -44,7 +44,7 @@
             android:text="21"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="45dp"/>
+            android:layout_marginTop="25dp"/>
 
     </LinearLayout>
 
@@ -103,8 +103,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/hit_button"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:insetLeft="0dp"
                 android:insetTop="0dp"
                 android:insetRight="0dp"
@@ -120,8 +120,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/double_button"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:insetLeft="0dp"
                 android:insetTop="0dp"
                 android:insetRight="0dp"
@@ -138,8 +138,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/split_button"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:insetLeft="0dp"
                 android:insetTop="0dp"
                 android:insetRight="0dp"
@@ -156,8 +156,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/stay_button"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:insetLeft="0dp"
                 android:insetTop="0dp"
                 android:insetRight="0dp"
