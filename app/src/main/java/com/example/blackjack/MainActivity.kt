@@ -1,15 +1,14 @@
 package com.example.blackjack
 
 import android.annotation.SuppressLint
-import android.app.ActivityOptions
-import android.content.Intent
-import android.graphics.Color
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewAnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.example.blackjack.databinding.ActivityMainBinding
 import com.google.android.gms.ads.AdRequest
@@ -19,12 +18,22 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
-
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    private var appModeTheme = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val pref = getSharedPreferences(PrefsKeys.SETTING, Context.MODE_PRIVATE)
+        appModeTheme = if (pref.getString(PrefsKeys.MODE, null).toString() == PrefsKeys.NIGHT_MODE) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            PrefsKeys.NIGHT_MODE
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            PrefsKeys.DAY_MODE
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -33,6 +42,9 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onStart() {
         super.onStart()
+
+        val pref = getSharedPreferences(PrefsKeys.SETTING, Context.MODE_PRIVATE)
+        val editor = pref.edit()
 
         binding.apply {
             adView.loadAd(AdRequest.Builder().build())
@@ -49,14 +61,27 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            settings.setOnClickListener {
+            appMode.setOnClickListener {
                 animation2()
                 GlobalScope.launch {
-                    delay(600)
+                    delay(700)
                     launch(Dispatchers.Main) {
-                        startActivity<SettingsActivity>()
+                        if (appModeTheme == PrefsKeys.DAY_MODE) {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                            appModeTheme = PrefsKeys.NIGHT_MODE
+
+                            editor.putString(PrefsKeys.MODE, PrefsKeys.NIGHT_MODE)
+                        }
+                        else {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                            appModeTheme = PrefsKeys.DAY_MODE
+
+                            editor.putString(PrefsKeys.MODE, PrefsKeys.DAY_MODE)
+                        }
+                        editor.apply()
+
                         overridePendingTransition(R.anim.slidein, R.anim.slideout)
-                        finish()
+                        recreate()
                     }
                 }
             }
@@ -68,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     fun animation() {
         binding.apply {
             gameMenu.visibility = View.GONE
-            settings.visibility = View.GONE
+            appMode.visibility = View.GONE
             adView.visibility = View.GONE
             name.visibility = View.GONE
 
@@ -83,7 +108,10 @@ class MainActivity : AppCompatActivity() {
                 .createCircularReveal(mainActivity, cx, cy, 0f, finalRadius.toFloat())
             mainActivity.visibility = View.VISIBLE
 
-            val colorValue = ContextCompat.getColor(this@MainActivity, R.color.background_color)
+            val colorValue = if (appModeTheme == PrefsKeys.DAY_MODE)
+                ContextCompat.getColor(this@MainActivity, R.color.background_color)
+            else
+                ContextCompat.getColor(this@MainActivity, R.color.black_background_color)
 
             mainActivity.setBackgroundColor(colorValue)
             anim.duration = 800
@@ -96,12 +124,12 @@ class MainActivity : AppCompatActivity() {
     fun animation2() {
         binding.apply {
             gameMenu.visibility = View.GONE
-            settings.visibility = View.GONE
+            //appMode.visibility = View.GONE
             adView.visibility = View.GONE
             name.visibility = View.GONE
 
             val location = IntArray(2)
-            settings.getLocationOnScreen(location)
+            appMode.getLocationOnScreen(location)
 
             val cx = location[0]
             val cy = location[1]
@@ -110,9 +138,13 @@ class MainActivity : AppCompatActivity() {
                 .createCircularReveal(mainActivity, cx, cy, 0f, finalRadius.toFloat())
             mainActivity.visibility = View.VISIBLE
 
-            val colorValue = ContextCompat.getColor(this@MainActivity, R.color.background_color)
+            val colorValue = if (appModeTheme == PrefsKeys.DAY_MODE)
+                ContextCompat.getColor(this@MainActivity, R.color.black_background_color)
+            else
+                ContextCompat.getColor(this@MainActivity, R.color.background_color)
 
             mainActivity.setBackgroundColor(colorValue)
+
             anim.duration = 600
             anim.start()
         }

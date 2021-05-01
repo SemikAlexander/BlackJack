@@ -2,10 +2,8 @@
 <RelativeLayout
     android:id="@+id/main_activity"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:background="@drawable/main_header">
 
     <com.example.blackjack.view.CustomTextView
@@ -31,7 +29,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/f14770"
             android:textColor="@color/white"
-            android:backgroundTint="@color/background_button_color"
+            android:backgroundTint="@color/black_background_button_color"
             android:layout_centerHorizontal="true"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -43,7 +41,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/f14770"
             android:textColor="@color/white"
-            android:backgroundTint="@color/background_button_color"
+            android:backgroundTint="@color/black_background_button_color"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/play_game"
             android:layout_marginTop="@dimen/button_top"/>
@@ -57,7 +55,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/f14770"
             android:textColor="@color/white"
-            android:backgroundTint="@color/background_button_color"
+            android:backgroundTint="@color/black_background_button_color"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/stats_game"
             android:layout_marginTop="@dimen/button_top"/>
@@ -68,7 +66,7 @@
         android:id="@+id/app_mode"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:src="@drawable/moon"
+        android:src="@drawable/sun"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginEnd="5dp"

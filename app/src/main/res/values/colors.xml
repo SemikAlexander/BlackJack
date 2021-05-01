@@ -9,7 +9,13 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="background_color">#61BA61</color>
+    <color name="black_background_color">#000</color>
+
     <color name="second_background_color">#8DDD8D</color>
+    <color name="black_second_background_color">#181818</color>
+
     <color name="background_button_color">#498B8B</color>
+    <color name="black_background_button_color">#436868</color>
+
     <color name="text_color">#F5AE01</color>
 </resources>
