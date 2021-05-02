@@ -116,6 +116,7 @@
                 android:tag="easy"
                 android:backgroundTint="@color/background_button_color"
                 android:layout_marginRight="@dimen/margin_between_menu"
+                android:layout_marginEnd="@dimen/margin_between_menu"
                 app:icon="@drawable/ic_hit"/>
 
             <com.google.android.material.button.MaterialButton
@@ -169,6 +170,7 @@
                 android:tag="hard"
                 android:backgroundTint="@color/background_button_color"
                 android:layout_marginLeft="@dimen/margin_between_menu"
+                android:layout_marginStart="@dimen/margin_between_menu"
                 app:icon="@drawable/ic_stay"/>
 
         </LinearLayout>
