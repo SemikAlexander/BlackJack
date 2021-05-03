@@ -18,7 +18,10 @@ class GameActivity : AppCompatActivity() {
         super.onStart()
 
         binding.apply {
+            playerPoints.text = "0"
+            dealerPoints.text = "0"
 
+            deal
         }
     }
 

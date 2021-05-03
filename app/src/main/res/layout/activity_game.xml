@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,123 +8,109 @@
     tools:context=".GameActivity"
     android:background="@color/background_color">
 
-    <LinearLayout
-        android:id="@+id/dealer_game_points"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageButton
-            android:id="@+id/dealer_imageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/ic_dealer"
-            android:scaleType="centerCrop"
-            android:background="@android:color/transparent"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"/>
-
-        <TextView
-            android:id="@+id/dealer_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dealer_score"
-            android:fontFamily="@font/f14770"
-            android:textColor="@color/white"
-            android:textSize="35sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"/>
-
-        <TextView
-            android:id="@+id/dealer_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/f14770"
-            android:textColor="@color/white"
-            android:textSize="35sp"
-            android:text="21"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="25dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/dealers_cards_field"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_below="@id/dealer_game_points">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:src="@drawable/queen_of_clubs"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:layout_marginStart="-65dp"
-            android:layout_marginLeft="-65dp"
-            android:src="@drawable/king_of_clubs" />
-
-    </LinearLayout>
-
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:id="@+id/result_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
-        <LinearLayout
-            android:id="@+id/player_cards_field"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:src="@drawable/queen_of_hearts"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:layout_marginStart="-65dp"
-                android:layout_marginLeft="-65dp"
-                android:src="@drawable/king_of_hearts" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/player_game_points"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/player_cards_field">
+            android:layout_centerInParent="true">
 
-            <ImageButton
-                android:id="@+id/player_imageView"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/ic_player"
+            <ImageView
+                android:id="@+id/winner_image"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
+                android:src="@drawable/ic_trophy"
                 android:scaleType="centerCrop"
-                android:background="@android:color/transparent"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"/>
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/winner_text"
+                android:layout_marginTop="@dimen/button_top"/>
 
             <TextView
-                android:id="@+id/player_textView"
+                android:id="@+id/winner_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/player_score"
+                android:text="@string/win_game"
+                android:fontFamily="@font/f14770"
+                android:textSize="@dimen/win_text_size"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/winner_image"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_centerHorizontal="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/replay_button"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:cornerRadius="50dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="35dp"
+                    android:backgroundTint="@color/background_button_color"
+                    android:layout_marginRight="@dimen/margin_between_game_results"
+                    app:icon="@drawable/ic_baseline_replay_24"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/menu_button"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:cornerRadius="50dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="35dp"
+                    android:backgroundTint="@color/background_button_color"
+                    android:layout_marginLeft="@dimen/margin_between_game_results"
+                    app:icon="@drawable/ic_baseline_menu_24"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/game_field"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/dealer_side"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/dealer_imageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_dealer"
+                android:scaleType="centerCrop"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"/>
+
+            <TextView
+                android:id="@+id/dealer_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dealer_score"
                 android:fontFamily="@font/f14770"
                 android:textColor="@color/white"
                 android:textSize="35sp"
@@ -132,7 +119,7 @@
                 android:layout_marginTop="25dp"/>
 
             <TextView
-                android:id="@+id/player_points"
+                android:id="@+id/dealer_points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/f14770"
@@ -142,87 +129,185 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="25dp"/>
+
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/player_game_points"
-            android:layout_centerHorizontal="true">
+            android:id="@+id/dealers_cards_field"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_below="@id/dealer_side">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/hit_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:cornerRadius="50dp"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconSize="35dp"
-                android:tag="easy"
-                android:backgroundTint="@color/background_button_color"
-                android:layout_marginRight="@dimen/margin_between_menu"
-                android:layout_marginEnd="@dimen/margin_between_menu"
-                app:icon="@drawable/ic_hit"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/queen_of_clubs"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/double_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:cornerRadius="50dp"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconSize="35dp"
-                android:tag="medium"
-                android:backgroundTint="@color/background_button_color"
-                android:layout_marginLeft="@dimen/margin_between_menu"
-                android:layout_marginRight="@dimen/margin_between_menu"
-                app:icon="@drawable/ic_double"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/split_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:cornerRadius="50dp"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconSize="35dp"
-                android:tag="hard"
-                android:backgroundTint="@color/background_button_color"
-                android:layout_marginLeft="@dimen/margin_between_menu"
-                android:layout_marginRight="@dimen/margin_between_menu"
-                app:icon="@drawable/ic_split"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/stay_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:cornerRadius="50dp"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconSize="35dp"
-                android:tag="hard"
-                android:backgroundTint="@color/background_button_color"
-                android:layout_marginLeft="@dimen/margin_between_menu"
-                android:layout_marginStart="@dimen/margin_between_menu"
-                app:icon="@drawable/ic_stay"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:layout_marginStart="-65dp"
+                android:layout_marginLeft="-65dp"
+                android:src="@drawable/king_of_clubs" />
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:id="@+id/player_cards_field"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/queen_of_hearts"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginStart="-65dp"
+                    android:layout_marginLeft="-65dp"
+                    android:src="@drawable/king_of_hearts" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/player_side"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/player_cards_field">
+
+                <ImageButton
+                    android:id="@+id/player_imageView"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_player"
+                    android:scaleType="centerCrop"
+                    android:background="@android:color/transparent"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"/>
+
+                <TextView
+                    android:id="@+id/player_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/player_score"
+                    android:fontFamily="@font/f14770"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"/>
+
+                <TextView
+                    android:id="@+id/player_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/f14770"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:text="21"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="25dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/player_side"
+                android:layout_centerHorizontal="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/hit_button"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:cornerRadius="50dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="35dp"
+                    android:tag="easy"
+                    android:backgroundTint="@color/background_button_color"
+                    android:layout_marginRight="@dimen/margin_between_menu"
+                    android:layout_marginEnd="@dimen/margin_between_menu"
+                    app:icon="@drawable/ic_hit"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/double_button"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:cornerRadius="50dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="35dp"
+                    android:tag="medium"
+                    android:backgroundTint="@color/background_button_color"
+                    android:layout_marginLeft="@dimen/margin_between_menu"
+                    android:layout_marginRight="@dimen/margin_between_menu"
+                    app:icon="@drawable/ic_double"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/split_button"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:cornerRadius="50dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="35dp"
+                    android:tag="hard"
+                    android:backgroundTint="@color/background_button_color"
+                    android:layout_marginLeft="@dimen/margin_between_menu"
+                    android:layout_marginRight="@dimen/margin_between_menu"
+                    app:icon="@drawable/ic_split"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/stay_button"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:cornerRadius="50dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="35dp"
+                    android:tag="hard"
+                    android:backgroundTint="@color/background_button_color"
+                    android:layout_marginLeft="@dimen/margin_between_menu"
+                    android:layout_marginStart="@dimen/margin_between_menu"
+                    app:icon="@drawable/ic_stay"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
