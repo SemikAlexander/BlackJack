@@ -12,7 +12,7 @@
         android:id="@+id/result_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -88,7 +88,7 @@
         android:id="@+id/game_field"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/dealer_side"
@@ -180,7 +180,23 @@
                     android:adjustViewBounds="true"
                     android:layout_marginStart="-65dp"
                     android:layout_marginLeft="-65dp"
-                    android:src="@drawable/king_of_hearts" />
+                    android:src="@drawable/king_of_hearts"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginStart="-65dp"
+                    android:layout_marginLeft="-65dp"
+                    android:src="@drawable/jack_of_hearts"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginStart="-65dp"
+                    android:layout_marginLeft="-65dp"
+                    android:src="@drawable/ace_of_hearts"/>
 
             </LinearLayout>
 
