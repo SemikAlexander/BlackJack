@@ -8,6 +8,7 @@
     android:background="@color/background_color">
 
     <LinearLayout
+        android:id="@+id/dealer_game_points"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -48,15 +49,63 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/dealers_cards_field"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@id/dealer_game_points">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/queen_of_clubs"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:layout_marginStart="-65dp"
+            android:layout_marginLeft="-65dp"
+            android:src="@drawable/king_of_clubs" />
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
         <LinearLayout
+            android:id="@+id/player_cards_field"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/queen_of_hearts"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:layout_marginStart="-65dp"
+                android:layout_marginLeft="-65dp"
+                android:src="@drawable/king_of_hearts" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/player_game_points"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/player_cards_field">
 
             <ImageButton
                 android:id="@+id/player_imageView"

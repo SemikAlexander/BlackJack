@@ -1,71 +1,73 @@
 package com.example.blackjack.game
 
-import android.content.Context
-import com.example.blackjack.R
+import com.example.blackjack.R.drawable.*
+import com.example.blackjack.game.Rank.*
+import com.example.blackjack.game.Suit.*
 
-import com.google.auto.value.AutoValue
-import java.util.*
+enum class Rank {
+    ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, BLANK
+}
 
+enum class Suit {
+    CLUBS, DIAMONDS, HEARTS, SPADES, PLAYER, DEALER
+}
 
-@AutoValue
-abstract class Card (val context: Context) {
-    override fun toString(): String {
-        val rank = rank().toString().toLowerCase()
-        val suit = suit().toString().toLowerCase()
-        return java.lang.String.format(Locale.US, "%s of %s", rank, suit)
-    }
+abstract class Card {
 
     abstract fun rank(): Rank
     abstract fun suit(): Suit
 
-    fun value(): Int {
+    fun cardsValue(): Int {
         return when (rank()) {
-            Rank.ACE -> 1
-            Rank.TWO -> 2
-            Rank.THREE -> 3
-            Rank.FOUR -> 4
-            Rank.FIVE -> 5
-            Rank.SIX -> 6
-            Rank.SEVEN -> 7
-            Rank.EIGHT -> 8
-            Rank.NINE -> 9
-            Rank.TEN, Rank.JACK, Rank.QUEEN, Rank.KING -> 10
+            ACE -> 1
+            TWO -> 2
+            THREE -> 3
+            FOUR -> 4
+            FIVE -> 5
+            SIX -> 6
+            SEVEN -> 7
+            EIGHT -> 8
+            NINE -> 9
+            TEN, JACK, QUEEN, KING -> 10
             else -> 0
         }
     }
 
-    val imageID: Int
+    val cardsID: Int
         get() {
             val array: IntArray = when (suit()) {
-                Suit.CLUBS -> CLUBS_ID
-                Suit.DIAMONDS -> DIAMONDS_ID
-                Suit.HEARTS -> HEARTS_ID
-                Suit.SPADES -> SPADES_ID
-                Suit.PLAYER -> return R.drawable.red_back
-                Suit.DEALER -> return R.drawable.blue_back
+                CLUBS -> CLUBS_ID
+                DIAMONDS -> DIAMONDS_ID
+                HEARTS -> HEARTS_ID
+                SPADES -> SPADES_ID
+
+                PLAYER -> return red_back
+                DEALER -> return blue_back
             }
             return array[rank().ordinal]
         }
 
-    enum class Rank {
-        ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, BLANK
-    }
-
-    enum class Suit {
-        CLUBS, DIAMONDS, HEARTS, SPADES, PLAYER, DEALER
-    }
-
     companion object {
-        val dealerBlank = create(Rank.BLANK, Suit.DEALER)
-        val playerBlank = create(Rank.BLANK, Suit.PLAYER)
-
-        private val CLUBS_ID = intArrayOf(R.drawable.ace_of_clubs, R.drawable.two_of_clubs, R.drawable.three_of_clubs, R.drawable.four_of_clubs, R.drawable.five_of_clubs, R.drawable.six_of_clubs, R.drawable.seven_of_clubs, R.drawable.eight_of_clubs, R.drawable.nine_of_clubs, R.drawable.ten_of_clubs, R.drawable.jack_of_clubs, R.drawable.queen_of_clubs, R.drawable.king_of_clubs)
-        private val DIAMONDS_ID = intArrayOf(R.drawable.ace_of_diamonds, R.drawable.two_of_diamonds, R.drawable.three_of_diamonds, R.drawable.four_of_diamonds, R.drawable.five_of_diamonds, R.drawable.six_of_diamonds, R.drawable.seven_of_diamonds, R.drawable.eight_of_diamonds, R.drawable.nine_of_diamonds, R.drawable.ten_of_diamonds, R.drawable.jack_of_diamonds, R.drawable.queen_of_diamonds, R.drawable.king_of_diamonds)
-        private val HEARTS_ID = intArrayOf(R.drawable.ace_of_hearts, R.drawable.two_of_hearts, R.drawable.three_of_hearts, R.drawable.four_of_hearts, R.drawable.five_of_hearts, R.drawable.six_of_hearts, R.drawable.seven_of_hearts, R.drawable.eight_of_hearts, R.drawable.nine_of_hearts, R.drawable.ten_of_hearts, R.drawable.jack_of_hearts, R.drawable.queen_of_hearts, R.drawable.king_of_hearts)
-        private val SPADES_ID = intArrayOf(R.drawable.ace_of_spades, R.drawable.two_of_spades, R.drawable.three_of_spades, R.drawable.four_of_spades, R.drawable.five_of_spades, R.drawable.six_of_spades, R.drawable.seven_of_spades, R.drawable.eight_of_spades, R.drawable.nine_of_spades, R.drawable.ten_of_spades, R.drawable.jack_of_spades, R.drawable.queen_of_spades, R.drawable.king_of_spades)
-
-        private fun create(rank: Rank?, suit: Suit?): Card {
-            return AutoValue_Card(rank, suit)
-        }
+        private val CLUBS_ID = intArrayOf (
+                ace_of_clubs, two_of_clubs, three_of_clubs, four_of_clubs, five_of_clubs,
+                six_of_clubs, seven_of_clubs, eight_of_clubs, nine_of_clubs, ten_of_clubs,
+                jack_of_clubs, queen_of_clubs, king_of_clubs
+        )
+        private val DIAMONDS_ID = intArrayOf (
+                ace_of_diamonds, two_of_diamonds, three_of_diamonds, four_of_diamonds,
+                five_of_diamonds, six_of_diamonds, seven_of_diamonds, eight_of_diamonds,
+                nine_of_diamonds, ten_of_diamonds, jack_of_diamonds, queen_of_diamonds,
+                king_of_diamonds
+        )
+        private val HEARTS_ID = intArrayOf (
+                ace_of_hearts, two_of_hearts, three_of_hearts, four_of_hearts, five_of_hearts,
+                six_of_hearts, seven_of_hearts, eight_of_hearts, nine_of_hearts, ten_of_hearts,
+                jack_of_hearts, queen_of_hearts, king_of_hearts
+        )
+        private val SPADES_ID = intArrayOf (
+                ace_of_spades, two_of_spades, three_of_spades, four_of_spades, five_of_spades,
+                six_of_spades, seven_of_spades, eight_of_spades, nine_of_spades, ten_of_spades,
+                jack_of_spades, queen_of_spades, king_of_spades
+        )
     }
 }
