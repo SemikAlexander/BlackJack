@@ -8,6 +8,18 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="stay_button_color">#FF503D</color>
+    <color name="night_stay_button_color">#BF5C52</color>
+
+    <color name="double_button_color">#2695FF</color>
+    <color name="night_double_button_color">#4583BF</color>
+
+    <color name="hit_button_color">#29CF6D</color>
+    <color name="night_hit_button_color">#3E9B64</color>
+
+    <color name="split_button_color">#DC41DD</color>
+    <color name="night_split_button_color">#A64EA6</color>
+
     <color name="background_color">#61BA61</color>
     <color name="black_background_color">#000</color>
 

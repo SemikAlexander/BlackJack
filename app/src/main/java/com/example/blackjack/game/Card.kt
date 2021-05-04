@@ -17,8 +17,8 @@ abstract class Card {
     abstract fun rank(): Rank
     abstract fun suit(): Suit
 
-    fun cardsValue(): Int {
-        return when (rank()) {
+    fun cardsValue(rank: Rank): Int {
+        return when (rank) {
             ACE -> 1
             TWO -> 2
             THREE -> 3

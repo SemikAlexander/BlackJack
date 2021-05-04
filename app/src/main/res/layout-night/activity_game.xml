@@ -243,7 +243,7 @@
                     app:iconPadding="0dp"
                     app:iconSize="35dp"
                     android:tag="easy"
-                    android:backgroundTint="@color/black_background_button_color"
+                    android:backgroundTint="@color/night_hit_button_color"
                     android:layout_marginRight="@dimen/margin_between_menu"
                     android:layout_marginEnd="@dimen/margin_between_menu"
                     app:icon="@drawable/ic_hit"/>
@@ -261,7 +261,7 @@
                     app:iconPadding="0dp"
                     app:iconSize="35dp"
                     android:tag="medium"
-                    android:backgroundTint="@color/black_background_button_color"
+                    android:backgroundTint="@color/night_double_button_color"
                     android:layout_marginLeft="@dimen/margin_between_menu"
                     android:layout_marginRight="@dimen/margin_between_menu"
                     app:icon="@drawable/ic_double"/>
@@ -279,7 +279,7 @@
                     app:iconPadding="0dp"
                     app:iconSize="35dp"
                     android:tag="hard"
-                    android:backgroundTint="@color/black_background_button_color"
+                    android:backgroundTint="@color/night_split_button_color"
                     android:layout_marginLeft="@dimen/margin_between_menu"
                     android:layout_marginRight="@dimen/margin_between_menu"
                     app:icon="@drawable/ic_split"/>
@@ -297,7 +297,7 @@
                     app:iconPadding="0dp"
                     app:iconSize="35dp"
                     android:tag="hard"
-                    android:backgroundTint="@color/black_background_button_color"
+                    android:backgroundTint="@color/night_stay_button_color"
                     android:layout_marginLeft="@dimen/margin_between_menu"
                     android:layout_marginStart="@dimen/margin_between_menu"
                     app:icon="@drawable/ic_stay"/>

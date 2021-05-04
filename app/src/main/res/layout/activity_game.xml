@@ -159,7 +159,8 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp">
 
             <LinearLayout
                 android:id="@+id/player_cards_field"
@@ -262,7 +263,7 @@
                     app:iconPadding="0dp"
                     app:iconSize="35dp"
                     android:tag="easy"
-                    android:backgroundTint="@color/background_button_color"
+                    android:backgroundTint="@color/hit_button_color"
                     android:layout_marginRight="@dimen/margin_between_menu"
                     android:layout_marginEnd="@dimen/margin_between_menu"
                     app:icon="@drawable/ic_hit"/>
@@ -280,10 +281,11 @@
                     app:iconPadding="0dp"
                     app:iconSize="35dp"
                     android:tag="medium"
-                    android:backgroundTint="@color/background_button_color"
+                    android:backgroundTint="@color/double_button_color"
                     android:layout_marginLeft="@dimen/margin_between_menu"
                     android:layout_marginRight="@dimen/margin_between_menu"
-                    app:icon="@drawable/ic_double"/>
+                    app:icon="@drawable/ic_double"
+                    android:visibility="visible"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/split_button"
@@ -298,10 +300,11 @@
                     app:iconPadding="0dp"
                     app:iconSize="35dp"
                     android:tag="hard"
-                    android:backgroundTint="@color/background_button_color"
+                    android:backgroundTint="@color/split_button_color"
                     android:layout_marginLeft="@dimen/margin_between_menu"
                     android:layout_marginRight="@dimen/margin_between_menu"
-                    app:icon="@drawable/ic_split"/>
+                    app:icon="@drawable/ic_split"
+                    android:visibility="visible"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/stay_button"
@@ -316,7 +319,7 @@
                     app:iconPadding="0dp"
                     app:iconSize="35dp"
                     android:tag="hard"
-                    android:backgroundTint="@color/background_button_color"
+                    android:backgroundTint="@color/stay_button_color"
                     android:layout_marginLeft="@dimen/margin_between_menu"
                     android:layout_marginStart="@dimen/margin_between_menu"
                     app:icon="@drawable/ic_stay"/>
