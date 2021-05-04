@@ -79,6 +79,8 @@ class GameActivity : AppCompatActivity() {
             }
 
             doubleButton.setOnClickListener {
+                //Doubles the bid
+
                 playerCardsField.removeAllViews()
 
                 gameProcess.takeCardInHand(packOfCards, userHand)
@@ -88,7 +90,7 @@ class GameActivity : AppCompatActivity() {
             }
 
             stayButton.setOnClickListener {
-
+                //After clicking on the stop, the dealer opens a second hidden card and can still take two additional cards
             }
         }
     }
