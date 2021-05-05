@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private var appModeTheme = ""
     private var bid = 0
+    private var cashUser = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,11 @@ class MainActivity : AppCompatActivity() {
             PrefsKeys.DAY_MODE
         }
 
+        cashUser = pref.getInt(PrefsKeys.CASH, 2000)
+
+        if (cashUser == 0)
+            cashUser = 200
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
@@ -49,12 +55,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             adView.loadAd(AdRequest.Builder().build())
+            cash.text = "$cashUser$"
 
             playGame.setOnClickListener {
                 animation()
                 GlobalScope.launch {
                     delay(800)
                     launch(Dispatchers.Main) {
+                        editor.putInt(PrefsKeys.CASH, cashUser - bid)
+                        editor.apply()
+
                         startActivity<GameActivity> {
                             putExtra(PrefsKeys.BID, bid)
                         }

@@ -96,7 +96,8 @@
                 android:src="@drawable/chip_fifty"
                 android:layout_marginStart="-45dp"
                 android:layout_marginLeft="-45dp"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                android:visibility="invisible"/>
 
         </LinearLayout>
 

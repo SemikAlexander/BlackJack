@@ -1,10 +1,9 @@
 package com.example.blackjack.game
 
 enum class TypeHand { PLAYER, DEALER }
+enum class Results { WON, LOST, DRAW }
 
-class Hand (
-        val typeHand: TypeHand
-) {
+class Hand (typeHand: TypeHand) {
     val cards: ArrayList<Cards> = ArrayList()
 
     fun takeCardInHand(packOfCards: ArrayList<Cards>) {

@@ -1,5 +1,6 @@
 package com.example.blackjack
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -7,10 +8,8 @@ import android.widget.LinearLayout.LayoutParams
 import android.widget.LinearLayout.LayoutParams.MATCH_PARENT
 import androidx.appcompat.app.AppCompatActivity
 import com.example.blackjack.databinding.ActivityGameBinding
-import com.example.blackjack.game.Cards
-import com.example.blackjack.game.GameProcess
-import com.example.blackjack.game.Hand
-import com.example.blackjack.game.TypeHand
+import com.example.blackjack.game.*
+import com.example.blackjack.game.Results.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -20,9 +19,14 @@ import kotlinx.coroutines.launch
 class GameActivity : AppCompatActivity() {
     lateinit var binding: ActivityGameBinding
     private var bidGame = 0
+    private var cash = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val pref = getSharedPreferences(PrefsKeys.SETTING, Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        cash = pref.getInt(PrefsKeys.CASH, 2000)
 
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -33,7 +37,6 @@ class GameActivity : AppCompatActivity() {
 
             playerCardsField.removeAllViews()
             dealersCardsField.removeAllViews()
-            chipsField.removeAllViews()
 
             splitButton.visibility = View.GONE
 
@@ -50,6 +53,9 @@ class GameActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+        val pref = getSharedPreferences(PrefsKeys.SETTING, Context.MODE_PRIVATE)
+        val editor = pref.edit()
 
         val gameProcess = GameProcess()
 
@@ -84,6 +90,8 @@ class GameActivity : AppCompatActivity() {
 
             doubleButton.setOnClickListener {
                 //Doubles the bid
+
+                doubleChip.visibility = View.VISIBLE
                 when (bidGame) {
                     1 -> doubleChip.setImageResource(R.drawable.chip_one)
                     5 -> doubleChip.setImageResource(R.drawable.chip_five)
@@ -101,15 +109,25 @@ class GameActivity : AppCompatActivity() {
 
                 dealersCardsField.removeAllViews()
 
-                if (gameProcess.isGameWon(userHand, dealerHand, packOfCards))
+                val result = gameProcess.isGameWon(userHand, dealerHand, packOfCards)
+
+                if (result == WON) {
                     toast("Game won!")
-                else
+                    cash = (bidGame * 2) + bidGame
+                }
+                if (result == LOST) {
                     toast("Game lost!")
+                    cash -= bidGame
+                }
+                else {
+                    toast("Game draw!")
+                    cash += (bidGame * 2)
+                }
 
                 putDealersCardsOnTable(dealerHand, false)
 
                 GlobalScope.launch {
-                    delay(1000)
+                    delay(2000)
                     launch(Dispatchers.Main) {
                         startActivity<MainActivity>()
                         finish()
@@ -122,16 +140,28 @@ class GameActivity : AppCompatActivity() {
             stayButton.setOnClickListener {
                 dealersCardsField.removeAllViews()
 
-                if (gameProcess.isGameWon(userHand, dealerHand, packOfCards))
+                val result = gameProcess.isGameWon(userHand, dealerHand, packOfCards)
+
+                if (result == WON) {
                     toast("Game won!")
-                else
+                    cash += (bidGame * 2)
+                }
+                if (result == LOST) {
                     toast("Game lost!")
+                }
+                else {
+                    toast("Game draw!")
+                    cash += bidGame
+                }
 
                 putDealersCardsOnTable(dealerHand, false)
 
                 GlobalScope.launch {
                     delay(1000)
                     launch(Dispatchers.Main) {
+                        editor.putInt(PrefsKeys.CASH, cash)
+                        editor.apply()
+
                         startActivity<MainActivity>()
                         finish()
                     }
@@ -159,7 +189,6 @@ class GameActivity : AppCompatActivity() {
             playerPoints.text = hand.getPoints().toString()
         }
     }
-
     private fun putDealersCardsOnTable(hand: Hand, startRound: Boolean) {
         binding.apply {
             val lp = LayoutParams(250, MATCH_PARENT)
