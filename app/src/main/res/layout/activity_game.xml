@@ -8,18 +8,12 @@
     tools:context=".GameActivity"
     android:background="@color/background_color">
 
-    <RelativeLayout
-        android:id="@+id/game_field"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible">
-
-        <LinearLayout
+    <LinearLayout
             android:id="@+id/dealer_side"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageButton
+        <ImageButton
                 android:id="@+id/dealer_imageView"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -92,15 +86,17 @@
                 android:id="@+id/chosen_player_chip"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                android:src="@drawable/chip_fifty"/>
+                android:src="@drawable/chip_fifty"
+                tools:ignore="ContentDescription" />
 
             <ImageView
-                android:id="@+id/chosen_dealer_chip"
+                android:id="@+id/double_chip"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:src="@drawable/chip_fifty"
                 android:layout_marginStart="-45dp"
-                android:layout_marginLeft="-45dp"/>
+                android:layout_marginLeft="-45dp"
+                tools:ignore="ContentDescription" />
 
         </LinearLayout>
 
@@ -272,9 +268,7 @@
                     android:layout_marginStart="@dimen/margin_between_menu"
                     app:icon="@drawable/ic_stay"/>
 
-            </LinearLayout>
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 

@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 class GameActivity : AppCompatActivity() {
     lateinit var binding: ActivityGameBinding
-    lateinit var bidGame = 0
+    private var bidGame = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,26 +39,11 @@ class GameActivity : AppCompatActivity() {
 
             bidGame = intent.getIntExtra(PrefsKeys.BID, 0)
             when (bidGame) {
-                1 -> {
-                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_one)
-                    chosenDealerChip.setBackgroundResource(R.drawable.chip_one)
-                }
-                5 -> {
-                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_five)
-                    chosenDealerChip.setBackgroundResource(R.drawable.chip_five)
-                }
-                25 -> {
-                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_twenty_five)
-                    chosenDealerChip.setBackgroundResource(R.drawable.chip_twenty_five)
-                }
-                50 -> {
-                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_fifty)
-                    chosenDealerChip.setBackgroundResource(R.drawable.chip_fifty)
-                }
-                100 -> {
-                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_hundred)
-                    chosenDealerChip.setBackgroundResource(R.drawable.chip_hundred)
-                }
+                1 -> chosenPlayerChip.setImageResource(R.drawable.chip_one)
+                5 -> chosenPlayerChip.setImageResource(R.drawable.chip_five)
+                25 -> chosenPlayerChip.setImageResource(R.drawable.chip_twenty_five)
+                50 -> chosenPlayerChip.setImageResource(R.drawable.chip_fifty)
+                100 -> chosenPlayerChip.setImageResource(R.drawable.chip_hundred)
             }
         }
     }
@@ -99,6 +84,14 @@ class GameActivity : AppCompatActivity() {
 
             doubleButton.setOnClickListener {
                 //Doubles the bid
+                when (bidGame) {
+                    1 -> doubleChip.setImageResource(R.drawable.chip_one)
+                    5 -> doubleChip.setImageResource(R.drawable.chip_five)
+                    25 -> doubleChip.setImageResource(R.drawable.chip_twenty_five)
+                    50 -> doubleChip.setImageResource(R.drawable.chip_fifty)
+                    100 -> doubleChip.setImageResource(R.drawable.chip_hundred)
+                }
+
                 playerCardsField.removeAllViews()
 
                 userHand.takeCardInHand(packOfCards)
