@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 
 class GameActivity : AppCompatActivity() {
     lateinit var binding: ActivityGameBinding
+    lateinit var bidGame = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +33,33 @@ class GameActivity : AppCompatActivity() {
 
             playerCardsField.removeAllViews()
             dealersCardsField.removeAllViews()
+            chipsField.removeAllViews()
 
             splitButton.visibility = View.GONE
+
+            bidGame = intent.getIntExtra(PrefsKeys.BID, 0)
+            when (bidGame) {
+                1 -> {
+                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_one)
+                    chosenDealerChip.setBackgroundResource(R.drawable.chip_one)
+                }
+                5 -> {
+                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_five)
+                    chosenDealerChip.setBackgroundResource(R.drawable.chip_five)
+                }
+                25 -> {
+                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_twenty_five)
+                    chosenDealerChip.setBackgroundResource(R.drawable.chip_twenty_five)
+                }
+                50 -> {
+                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_fifty)
+                    chosenDealerChip.setBackgroundResource(R.drawable.chip_fifty)
+                }
+                100 -> {
+                    chosenPlayerChip.setBackgroundResource(R.drawable.chip_hundred)
+                    chosenDealerChip.setBackgroundResource(R.drawable.chip_hundred)
+                }
+            }
         }
     }
 
@@ -79,6 +105,25 @@ class GameActivity : AppCompatActivity() {
                 putPlayerCardsOnTable(userHand)
 
                 playerPoints.text = userHand.getPoints().toString()
+
+                dealersCardsField.removeAllViews()
+
+                if (gameProcess.isGameWon(userHand, dealerHand, packOfCards))
+                    toast("Game won!")
+                else
+                    toast("Game lost!")
+
+                putDealersCardsOnTable(dealerHand, false)
+
+                GlobalScope.launch {
+                    delay(1000)
+                    launch(Dispatchers.Main) {
+                        startActivity<MainActivity>()
+                        finish()
+                    }
+                }
+
+                return@setOnClickListener
             }
 
             stayButton.setOnClickListener {

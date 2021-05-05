@@ -9,6 +9,8 @@ object PrefsKeys {
     const val NIGHT_MODE = "night"
     const val DAY_MODE = "day"
 
+    const val BID = "bid"
+
     const val EASY_GAME_MODE = "easy"
     const val MEDIUM_GAME_MODE = "medium"
     const val HARD_GAME_MODE = "hard"

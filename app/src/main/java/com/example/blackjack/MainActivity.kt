@@ -21,6 +21,7 @@ import kotlin.math.max
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private var appModeTheme = ""
+    private var bid = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +55,9 @@ class MainActivity : AppCompatActivity() {
                 GlobalScope.launch {
                     delay(800)
                     launch(Dispatchers.Main) {
-                        startActivity<GameActivity>()
+                        startActivity<GameActivity> {
+                            putExtra(PrefsKeys.BID, bid)
+                        }
                         overridePendingTransition(R.anim.slidein, R.anim.slideout)
                         finish()
                     }
@@ -89,31 +92,43 @@ class MainActivity : AppCompatActivity() {
             clearButton.setOnClickListener {
                 chosenChip.setBackgroundResource(0)
                 dealLayout.visibility = View.INVISIBLE
+
+                bid = 100
             }
 
             chip1.setOnClickListener {
                 chosenChip.setBackgroundResource(R.drawable.chip_one)
                 dealLayout.visibility = View.VISIBLE
+
+                bid = 1
             }
 
             chip5.setOnClickListener {
                 chosenChip.setBackgroundResource(R.drawable.chip_five)
                 dealLayout.visibility = View.VISIBLE
+
+                bid = 5
             }
 
             chip25.setOnClickListener {
                 chosenChip.setBackgroundResource(R.drawable.chip_twenty_five)
                 dealLayout.visibility = View.VISIBLE
+
+                bid = 25
             }
 
             chip50.setOnClickListener {
                 chosenChip.setBackgroundResource(R.drawable.chip_fifty)
                 dealLayout.visibility = View.VISIBLE
+
+                bid = 50
             }
 
             chip100.setOnClickListener {
                 chosenChip.setBackgroundResource(R.drawable.chip_hundred)
                 dealLayout.visibility = View.VISIBLE
+
+                bid = 100
             }
         }
     }
