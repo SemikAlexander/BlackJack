@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/main_activity"
+<RelativeLayout android:id="@+id/main_activity"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/main_header">
+    android:background="@drawable/main_header"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.example.blackjack.view.CustomTextView
         android:id="@+id/name"
@@ -16,51 +16,116 @@
         android:layout_marginTop="@dimen/button_top"
         android:text="@string/app_name"/>
 
+
+    <ImageButton
+        android:id="@+id/chosen_chip"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        android:layout_centerInParent="true"/>
+
     <RelativeLayout
-        android:id="@+id/game_menu"
+        android:id="@+id/start_game_relative"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_below="@id/chosen_chip"
+        android:layout_marginTop="@dimen/margin_top">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/play_game"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/play_game"
-            android:textStyle="bold"
-            android:fontFamily="@font/f14770"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/background_button_color"
-            android:layout_centerHorizontal="true"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/stats_game"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/stats_game"
-            android:textStyle="bold"
-            android:fontFamily="@font/f14770"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/background_button_color"
+        <LinearLayout
+            android:id="@+id/deal_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/play_game"
-            android:layout_marginTop="@dimen/button_top"/>
+            android:layout_marginTop="@dimen/margin_top"
+            android:visibility="invisible">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/rules_game"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height"
-            android:textSize="@dimen/button_text_size"
-            android:text="@string/rules_game"
-            android:textStyle="bold"
-            android:fontFamily="@font/f14770"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/background_button_color"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/stats_game"
-            android:layout_marginTop="@dimen/button_top"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clear_button"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="50dp"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="35dp"
+                android:tag="hard"
+                android:backgroundTint="@color/stay_button_color"
+                android:layout_marginRight="@dimen/margin_button_in_menu"
+                android:layout_marginEnd="@dimen/margin_button_in_menu"
+                app:icon="@drawable/ic_clear"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/play_game"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="50dp"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="35dp"
+                android:tag="easy"
+                android:backgroundTint="@color/hit_button_color"
+                android:layout_marginLeft="@dimen/margin_button_in_menu"
+                android:layout_marginStart="@dimen/margin_button_in_menu"
+                app:icon="@drawable/ic_hit"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/deal_layout"
+            android:layout_marginTop="@dimen/margin_button_in_menu"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/chip1"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/chip_one"
+                android:scaleType="centerCrop"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:id="@+id/chip5"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/chip_five"
+                android:scaleType="centerCrop"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:id="@+id/chip_25"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/chip_twenty_five"
+                android:scaleType="centerCrop"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:id="@+id/chip_50"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/chip_fifty"
+                android:scaleType="centerCrop"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:id="@+id/chip_100"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/chip_hundred"
+                android:scaleType="centerCrop"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
 

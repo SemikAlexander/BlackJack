@@ -1,6 +1,7 @@
 package com.example.blackjack.game
 
 import com.example.blackjack.R.drawable.*
+import com.example.blackjack.toast
 
 class GameProcess {
     fun createPackOfCard(): ArrayList<Cards> {
@@ -77,13 +78,22 @@ class GameProcess {
         packOfCards.shuffle()
         return packOfCards
     }
-
-    private fun isPackEmpty(packOfCards: ArrayList<Cards>): Boolean = packOfCards.size == 0
-
-    fun takeCardInHand(packOfCards: ArrayList<Cards>, hand: Hand) {
-        if (!isPackEmpty(packOfCards)) {
-            hand.addCard(packOfCards[0])
-            packOfCards.remove(packOfCards[0])
+    fun isGameWon(userHand: Hand, dealerHand: Hand, packOfCards: ArrayList<Cards>): Boolean {
+        when {
+            dealerHand.getPoints() > userHand.getPoints() -> return false
+            userHand.getPoints() > 21 -> return false
+            else -> {
+                for (i in 0..2) {
+                    dealerHand.takeCardInHand(packOfCards)
+                    if (dealerHand.getPoints() < 21) {
+                        if (dealerHand.getPoints() > userHand.getPoints())
+                            return false
+                    }
+                    else
+                        return true
+                }
+                return true
+            }
         }
     }
 }

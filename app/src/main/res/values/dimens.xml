@@ -9,4 +9,5 @@
     <dimen name="button_text_size">18sp</dimen>
     <dimen name="win_text_size">45sp</dimen>
     <dimen name="margin_between_menu">10dp</dimen>
+    <dimen name="margin_button_in_menu">50dp</dimen>
 </resources>

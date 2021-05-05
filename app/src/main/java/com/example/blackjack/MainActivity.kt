@@ -85,6 +85,36 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+
+            clearButton.setOnClickListener {
+                chosenChip.setBackgroundResource(0)
+                dealLayout.visibility = View.INVISIBLE
+            }
+
+            chip1.setOnClickListener {
+                chosenChip.setBackgroundResource(R.drawable.chip_one)
+                dealLayout.visibility = View.VISIBLE
+            }
+
+            chip5.setOnClickListener {
+                chosenChip.setBackgroundResource(R.drawable.chip_five)
+                dealLayout.visibility = View.VISIBLE
+            }
+
+            chip25.setOnClickListener {
+                chosenChip.setBackgroundResource(R.drawable.chip_twenty_five)
+                dealLayout.visibility = View.VISIBLE
+            }
+
+            chip50.setOnClickListener {
+                chosenChip.setBackgroundResource(R.drawable.chip_fifty)
+                dealLayout.visibility = View.VISIBLE
+            }
+
+            chip100.setOnClickListener {
+                chosenChip.setBackgroundResource(R.drawable.chip_hundred)
+                dealLayout.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -92,7 +122,8 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun animation() {
         binding.apply {
-            gameMenu.visibility = View.GONE
+            chosenChip.visibility = View.INVISIBLE
+            startGameRelative.visibility = View.INVISIBLE
             appMode.visibility = View.GONE
             adView.visibility = View.GONE
             name.visibility = View.GONE
@@ -123,7 +154,8 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun animation2() {
         binding.apply {
-            gameMenu.visibility = View.GONE
+            chosenChip.visibility = View.INVISIBLE
+            startGameRelative.visibility = View.INVISIBLE
             //appMode.visibility = View.GONE
             adView.visibility = View.GONE
             name.visibility = View.GONE

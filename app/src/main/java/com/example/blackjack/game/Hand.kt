@@ -3,12 +3,24 @@ package com.example.blackjack.game
 enum class TypeHand { PLAYER, DEALER }
 
 class Hand (
-        val typeHand: TypeHand,
-        val cards: ArrayList<Cards>
+        val typeHand: TypeHand
 ) {
-    fun addCard(card: Cards) {
-        cards.add(card)
+    val cards: ArrayList<Cards> = ArrayList()
+
+    fun takeCardInHand(packOfCards: ArrayList<Cards>) {
+        if (packOfCards.size != 0) {
+            cards.add(packOfCards[0])
+            packOfCards.remove(packOfCards[0])
+        }
     }
+
+    fun isTwoCardsSameValue(): Boolean {
+        if (cards.size != cards.distinct().count())
+            return true
+        return false
+    }
+
+    fun isBlackJack(): Boolean = getPoints() == 21
 
     fun getPoints(): Int {
         var points = 0
